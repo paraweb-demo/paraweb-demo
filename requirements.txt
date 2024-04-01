@@ -1,0 +1,4 @@
+selenium
+Pillow
+numpy
+requests
