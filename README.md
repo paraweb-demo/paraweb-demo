@@ -35,14 +35,18 @@ For whole HTML files:
 
 `python paraweb_creator_basic.py input_image.png --message-file path/to/your_message.txt output_image.png`
 
-### Paraweb Browser (Basic) (Flickr-hosted Parasites)
+### Paraweb Browser (Basic) (directly-hosted images)
+
+`python paraweb_browser_basic.py <Page with img URL>`
+
+### Paraweb Browser (Basic) (Flickr-hosted Para sites)
 
 `python paraweb_browser_basic_flickr.py <Flickr Photo URL>`
 
-### Paraweb Browser (Basic) (Imgur-hosted Parasites)
+### Paraweb Browser (Basic) (Imgur-hosted Para sites)
 
 `python paraweb_browser_basic_imgur.py <Imgur Post URL>`
 
-### Paraweb Browser (Basic) (Tumblr-hosted Parasites)
+### Paraweb Browser (Basic) (Tumblr-hosted Para sites)
 
 `python paraweb_browser_basic_imgur.py <Tumblr Post URL>`
