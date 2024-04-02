@@ -22,7 +22,7 @@ def setup_webdriver(headless=False):
 
 
 def extract_and_decode_image(url):
-    driver = setup_webdriver(headless=True)  # Modify as needed
+    driver = webdriver.Chrome()
     driver.get(url)
     WebDriverWait(driver, 10).until(
         EC.visibility_of_element_located((By.CSS_SELECTOR, 'img.image-placeholder'))
@@ -39,11 +39,15 @@ def extract_and_decode_image(url):
     headers = {'User-Agent': 'Mozilla/5.0'}
     response = requests.get(image_url, headers=headers)
     
+    print("Starting to process (may take awhile)...")
+    image = Image.open(BytesIO(response.content))
+
     pixels = np.array(image)
 
     binary_message = ''
     # Extract binary data from the image
     for row in pixels:
+        print("Still processing (may take awhile)...")
         for pixel in row:
             for channel in range(3):  # Assuming RGB channels
                 # Get the last two bits from each channel and add to the binary message
@@ -55,6 +59,8 @@ def extract_and_decode_image(url):
 
     # Calculate the end index of the message bits, adjusting for the length prefix and bit repetition
     message_end_index = 32 + message_length * 2  # Each bit is doubled
+
+    print("Still processing (may take awhile)...")
 
     # Extract the message bits, taking every second bit to account for bit repetition
     actual_message_bits = binary_message[32:message_end_index:2]
@@ -80,8 +86,6 @@ def main():
     args = parser.parse_args()
 
     message = extract_and_decode_image(args.url)
-    print(f"Decoded Message: {message}")
-    # Optional: Render the message as HTML or process further
 
 if __name__ == "__main__":
     main()
