@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import argparse
 import requests
 from PIL import Image
@@ -45,6 +47,8 @@ def paraweb_flickr(url):
         
         driver = webdriver.Chrome()
         driver.get(f"data:text/html,{encoded_html}")
+        print("Press Enter to exit...")
+        input()
         
     else:
         print(f"Failed to download the image, status code: {response.status_code}")

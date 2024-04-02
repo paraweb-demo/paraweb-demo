@@ -10,16 +10,15 @@ import time
 import numpy as np
 import urllib.parse
 
-def paraweb_tumblr(url):
+def paraweb(url):
     
     driver = webdriver.Chrome()
-
     driver.get(url)
 
     time.sleep(2)
 
     # Locate the image with a width of 1024px using the updated Selenium API
-    image_element = driver.find_element(By.XPATH, '//img[@width="1024"]')
+    image_element = driver.find_element(By.XPATH, '//img')
 
     # Extract the image URL
     image_url = image_element.get_attribute('src')
@@ -64,11 +63,11 @@ def paraweb_tumblr(url):
     input()
 
 def main():
-    parser = argparse.ArgumentParser(description="Extract hidden messages from Tumblr images.")
-    parser.add_argument("url", type=str, help="The URL of the Tumblr post.")
+    parser = argparse.ArgumentParser(description="Extract hidden messages from web pages")
+    parser.add_argument("url", type=str, help="The URL of the web page with a Paraweb image.")
     args = parser.parse_args()
 
-    paraweb_tumblr(args.url)
+    paraweb(args.url)
 
 if __name__ == "__main__":
     main()

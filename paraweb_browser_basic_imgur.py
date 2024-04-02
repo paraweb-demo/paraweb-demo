@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import argparse
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -69,6 +71,8 @@ def extract_and_decode_image(url):
     encoded_html = urllib.parse.quote(message)
 
     driver.get(f"data:text/html,{encoded_html}")
+    print("Press Enter to exit...")
+    input()
 
 def main():
     parser = argparse.ArgumentParser(description="Extract and decode hidden messages from images hosted on Imgur.")
